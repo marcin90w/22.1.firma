@@ -17,13 +17,14 @@ public class MailController {
         this.mailSender = mailSender;
     }
 
-    public void sendMessageWithAttachment(String to, String subject, String text) {
+    public void sendMessageWithAttachment(String cc, String subject, String text) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
             helper.setFrom("test@javny.pl");
-            helper.setTo(to);
+            helper.setTo("marcin90w@gmail.com");
+            helper.setCc(cc);
             helper.setSubject(subject);
             helper.setText(text);
             mailSender.send(message);

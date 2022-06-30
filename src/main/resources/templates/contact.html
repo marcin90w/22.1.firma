@@ -7,10 +7,10 @@
 <body>
 
 <section layout:fragment="content" class="content">
-    <form action="/kontakt" method="get">
+    <form action="/wyslij" method="post">
         <div class="mb-3">
-            <label for="emailSender" class="form-label" name="from">Proszę pozostaw swój adres email</label>
-            <input type="email" class="form-control" id="emailSender" placeholder="name@example.com">
+            <label for="emailSender" class="form-label">Proszę pozostaw swój adres email</label>
+            <input type="email" class="form-control" id="emailSender" placeholder="name@example.com" name="CC">
         </div>
         <select class="form-select" aria-label="Disabled select example" name="subject">
             <option selected>Wybierz Temat</option>
@@ -19,17 +19,12 @@
             <option value="3">Skarga</option>
         </select>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label" name="text">Treść zapytania</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label">Treść zapytania</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="text" rows="3"></textarea>
         </div>
         <div class="col-auto">
-            <input type="submit" value="wyslij" class="btn btn-primary mb-3" onclick="confirmMessage()">Wyślij wiadomość</input>
+            <button type="submit" value="wyslij" class="btn btn-primary mb-3">Wyślij wiadomość</button>
         </div>
-        <script>
-            function confirmMessage() {
-                confirmMessage("Wysłano wiadomość");
-            }
-        </script>
     </form>
 </section>
 </body>

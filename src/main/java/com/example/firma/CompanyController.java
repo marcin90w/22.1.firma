@@ -1,9 +1,12 @@
 package com.example.firma;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -31,11 +34,15 @@ public class CompanyController {
     }
 
     @ResponseBody
-    @GetMapping("wyslij")
-    public String sendMail(@RequestParam String from, @RequestParam String subject, @RequestParam String text) {
-        text = text + "/n" + from;
-        mailController.sendMessageWithAttachment("marcin90w@gmail.com", subject, text);
-
-        return "contact";
+    @PostMapping("/wyslij")
+    public String sendMail(@RequestParam String CC, @RequestParam String subject, @RequestParam String text) {
+        text = text + "\n" + CC;
+        mailController.sendMessageWithAttachment(CC, subject, text);
+        return "redirect:/contact";
     }
+
+//    @GetMapping("kontakt?success")
+//    public String sendSucceed(Model model) {
+//        model.addAttribute("success", "Wiadomość wysłano poprawnie")
+//    }
 }
