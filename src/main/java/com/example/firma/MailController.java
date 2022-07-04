@@ -16,7 +16,7 @@ public class MailController {
         this.mailSender = mailSender;
     }
 
-    public void sendMessageWithAttachment(String cc, String subject, String text) {
+    public void sendMessage(String cc, String subject, String text) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);

@@ -35,12 +35,7 @@ public class CompanyController {
     @PostMapping("/wyslij")
     public String sendMail(@RequestParam String CC, @RequestParam String subject, @RequestParam String text) {
         text = text + "\n" + CC;
-        mailController.sendMessageWithAttachment(CC, subject, text);
+        mailController.sendMessage(CC, subject, text);
         return "redirect:/contact";
     }
-
-//    @GetMapping("kontakt?success")
-//    public String sendSucceed(Model model) {
-//        model.addAttribute("success", "Wiadomość wysłano poprawnie")
-//    }
 }
