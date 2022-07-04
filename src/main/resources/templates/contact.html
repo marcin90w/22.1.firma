@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Formularz Kontaktowy</title>
 </head>
 <body>
 
+<section layout:fragment="content" class="content">
+    <form action="/wyslij" method="post">
+        <div class="mb-3">
+            <label for="emailSender" class="form-label">Proszę pozostaw swój adres email</label>
+            <input type="email" class="form-control" id="emailSender" placeholder="name@example.com" name="CC">
+        </div>
+        <select class="form-select" aria-label="Disabled select example" name="subject">
+            <option selected>Wybierz Temat</option>
+            <option value="1">Zapytanie</option>
+            <option value="2">Reklamacja</option>
+            <option value="3">Skarga</option>
+        </select>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Treść zapytania</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="text" rows="3"></textarea>
+        </div>
+        <div class="col-auto">
+            <button type="submit" value="wyslij" class="btn btn-primary mb-3">Wyślij wiadomość</button>
+        </div>
+    </form>
+</section>
 </body>
 </html>
